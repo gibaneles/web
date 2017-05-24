@@ -25,7 +25,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'OLAR'
+      msg: 'ADMIN'
     }
   }
 }
