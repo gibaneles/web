@@ -7,11 +7,16 @@ app.config(function($routeProvider, $locationProvider) {
    $routeProvider
 
    // para a rota '/', carregaremos o template home.html e o controller 'HomeCtrl'
-   .when('/user', {
-      templateUrl : 'app/views/user.html',
+   .when('/profile', {
+      templateUrl : 'app/views/profile.html',
       controller     : 'UserController',
    })
 
+   .when('/profile', {
+      templateUrl : 'app/views/profile.html',
+      controller     : 'UserController',
+   })
+   
    // para a rota '/sobre', carregaremos o template sobre.html e o controller 'SobreCtrl'
    .when('/admin', {
       templateUrl : 'app/views/admin.html',
