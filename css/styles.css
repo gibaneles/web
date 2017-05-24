@@ -2,3 +2,30 @@
   height: calc(100vh - 80px);
   background: gray;
 }
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+td.title {
+  font-weight: bold;
+}
+
+td.left {
+  text-align: left;
+}
+
+td.right {
+  text-align: right;
+}
+
+.card-row > * {
+  display: inline-block;
+}

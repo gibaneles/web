@@ -20,9 +20,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>
+  
+  <script src="app/app.js"></script>
 </head>
 
-<body ng-app>
+<body>
   <!-- Always shows a header, even in smaller screens. -->
   <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
@@ -47,12 +53,13 @@
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Pet Shop</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Perfil</a>
-        <a class="mdl-navigation__link" href="">Serviços</a>
+        <a class="mdl-navigation__link" href="#/profile">Perfil</a>
+        <a class="mdl-navigation__link" href="#/services">Serviços</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
-      <div class="page-content" ng-view></div>
+      <div class="page-content">
+      </div>
     </main>
   </div>
 </body>
