@@ -1,6 +1,9 @@
 .banner {
-  height: calc(100vh - 80px);
   background: gray;
+}
+
+body {
+  font-family: Quicksand, sans-serif;
 }
 
 .demo-card-wide.mdl-card {
@@ -28,4 +31,16 @@ td.right {
 
 .card-row > * {
   display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.mdl-navigation__link {
+  cursor: pointer;
 }

@@ -12,20 +12,12 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-deep_purple.min.css" />
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   
   <!-- JS -->
+  <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>
-  
-  <script src="app/app.js"></script>
+  <script src="js/user.js"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
 <body>
@@ -51,10 +43,11 @@
       </div>
     </header>
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Pet Shop</span>
+      <span class="mdl-layout-title" style="cursor: default;">Premium Dog</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="#/profile">Perfil</a>
-        <a class="mdl-navigation__link" href="#/services">Serviços</a>
+        <a class="mdl-navigation__link" id="profile">Perfil</a>
+        <a class="mdl-navigation__link" id="animals">Animais</a>
+        <a class="mdl-navigation__link" id="services">Serviços</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
