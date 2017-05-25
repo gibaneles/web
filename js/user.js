@@ -1,7 +1,7 @@
 $(function() {
   
-    $('#profile').on('click', (e) => {
-      $.get( "views/profile.html", function( data ) {
+    $('#userprofile').on('click', (e) => {
+      $.get( "views/userprofile.html", function( data ) {
         $( ".page-content" ).empty().html(data)
       });
     });
@@ -18,5 +18,4 @@ $(function() {
       });
     });
   
- 
 });
