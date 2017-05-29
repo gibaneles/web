@@ -11,13 +11,13 @@ $(function() {
             for(user of users) {
                 if((user.userpass === userpass)&&(user.username === username)) {
                     login = true
+                    bd.insert("sessao", user)
                     window.location.href = "user.html"
                 }
             }
             if(login === false) {
                 swal("Erro!", "Usuário ou senha inválidos!", "error")
             }
-            
         }
     })
     $( "#register" ).submit(function( event ) {
