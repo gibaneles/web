@@ -18,7 +18,7 @@ $(function() {
             passrepeat: $('#passrepeat').val(),
             name: $('#name').val(),
             phone: $('#phone').val(),
-            email: $('#email').val(),
+            email: $('#email').val()
         }
         
 

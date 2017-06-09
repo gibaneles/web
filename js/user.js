@@ -18,4 +18,10 @@ $(function() {
       });
     });
   
+    $('#products').on('click', (e) => {
+      $.get( "views/produtcs.html", function( data ) {
+        $( ".page-content" ).empty().html(data)
+      });
+    });
+  
 });

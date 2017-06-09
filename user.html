@@ -10,6 +10,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/mdl-jquery-modal-dialog.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-indigo.min.css" />
   
@@ -18,6 +19,7 @@
   <script src="js/scripts.js"></script>
   <script src="js/user.js"></script>
   <script src="js/bd.js"></script>
+  <script src="js/mdl-jquery-modal-dialog.js"></script>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
   <!-- SWEET ALERTS -->
@@ -27,7 +29,7 @@
   
 </head>
 
-<body>
+<body style="background: #f6f6f6;">
   <!-- Always shows a header, even in smaller screens. -->
   <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
@@ -55,10 +57,47 @@
         <a class="mdl-navigation__link" id="userprofile">Perfil</a>
         <a class="mdl-navigation__link" id="animals">Animais</a>
         <a class="mdl-navigation__link" id="services">Serviços</a>
+        <a class="mdl-navigation__link" id="products">Produtos</a>
       </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
-      <div class="page-content "></div>
+      <div class="page-content ">
+        <script src="js/products.js"></script>
+        <style>
+          .cart {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            border-radius: 60px;
+            font-size: 40px;
+            line-height: 60px;
+          }
+          
+          .product-card {
+            height: 220px;
+          }
+        </style>
+        <div class="mdl-grid mdl-layout__content">
+          <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--6-col-phone display-title">Produtos</div>
+          <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--6-col-phone">
+            <i id="cart" class="material-icons cart accent-white accent-background clickable">shopping_cart</i>
+          </div>
+          
+          <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card text-center">
+            <div style="height: 10%;" class="display-title text-center">Titulo</div>
+            <div style="height: 70%;"></div>
+            <div class="text-center"style="height: 20%;">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 80%;">
+                <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                <label class="mdl-textfield__label" for="sample4">Quantidade</label>
+                <span class="mdl-textfield__error">Precisa ser um numero!</span>
+              </div>
+              <i class="material-icons accent clickable add_to_cart" style="line-height: 40px;">add_shopping_cart</i>              
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </main>
   </div>
 </body>

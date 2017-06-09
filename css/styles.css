@@ -44,3 +44,39 @@ a:visited {
 .mdl-navigation__link {
   cursor: pointer;
 }
+
+.display-title {
+  font-family: Quicksand, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.display-item {
+  font-family: Quicksand, sans-serif;
+  font-size: 12px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.accent {
+  color: rgb(63, 81, 181);
+  fill: rgb(63, 81, 181);
+}
+
+.accent-background {
+  background: rgb(63, 81, 181);
+}
+
+.accent-white {
+  color: white;
+}
+
+.right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
