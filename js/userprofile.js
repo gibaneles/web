@@ -1,5 +1,10 @@
+
 $(function() {
-  
+    let user = bd.selectId("sessao", bd.numRows("sessao")-1)
+
+    $('#name').val(user.name)
+    console.log(user)
+    
     $('#edit').on('click', (e) => {
       $('.mdl-textfield__input').prop('disabled', false);
       $('.mdl-textfield__input').val("");
