@@ -19,7 +19,7 @@ $(function() {
     });
   
     $('#products').on('click', (e) => {
-      $.get( "views/produtcs.html", function( data ) {
+      $.get( "views/products.html", function( data ) {
         $( ".page-content" ).empty().html(data)
       });
     });

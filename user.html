@@ -67,7 +67,7 @@
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
       <div class="page-content ">
-        <script src="js/products.js"></script>
+        <script src="js/animals.js"></script>
         <style>
           .cart {
             width: 60px;
@@ -77,31 +77,21 @@
             font-size: 40px;
             line-height: 60px;
           }
-          
+
           .product-card {
             height: 220px;
           }
         </style>
-        <div class="mdl-grid mdl-layout__content">
-          <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--6-col-phone display-title">Produtos</div>
-          <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--6-col-phone">
-            <i id="cart" class="material-icons cart accent-white accent-background clickable">shopping_cart</i>
-          </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col display-title">Meus animais</div>
           
-          <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card text-center">
-            <div style="height: 10%;" class="display-title text-center">Titulo</div>
-            <div style="height: 70%;"></div>
-            <div class="text-center"style="height: 20%;">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 80%;">
-                <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                <label class="mdl-textfield__label" for="sample4">Quantidade</label>
-                <span class="mdl-textfield__error">Precisa ser um numero!</span>
-              </div>
-              <i class="material-icons accent clickable add_to_cart" style="line-height: 40px;">add_shopping_cart</i>              
-            </div>
+          <div id="animal-1" class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card text-center">
+            <div style="height: 10%;" class="display-title text-center">Animal 1</div>
+            <div style="height: 90%;"></div>
+            
           </div>
-          
         </div>
+
       </div>
     </main>
   </div>

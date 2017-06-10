@@ -8,12 +8,12 @@ $(function() {
       text: '<div style="background: red; width: 50px; height: 50px;"></div>',
       negative: {
           id: 'cancel-button',
-          title: 'Cancel',
+          title: 'Continuar Comprando',
           onClick: function() { }
       },
       positive: {
           id: 'ok-button',
-          title: 'OK',
+          title: 'Finalizar Compra',
           onClick: function() { }
       },
       cancelable: true,
@@ -23,4 +23,14 @@ $(function() {
     })
   })
   
+  $('.product-header,.product-image').on('click', (e) => {
+    let pid = $(this).parent().data('id')
+    
+    showDialog({
+      title: 'Produto 1',
+      text: 'Descricao do produto 1'
+    })
+  })
+  
 })
+
