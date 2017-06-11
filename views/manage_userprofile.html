@@ -45,37 +45,21 @@
         <h2 class="mdl-card__title-text"></h2>
       </div>
       <div class="mdl-card__supporting-text">
-
-        <div class="mdl-typography--text-center">
-          <div class="profile_picture"></div>
-            <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-              <i class="material-icons" id="attach" style="display: none;">attach_file</i>
-            </div>
-        </div>
-        <table style="width: 100%;">
-          <tr>
-            <td class="display-title">Nome: </td>
-            <td class="display-item" id="name"></td>
-          </tr>
-          <tr>
-            <td class="display-title">Telefone: </td>
-            <td class="display-item" id="phone"></td>
-          </tr>
-          <tr>
-            <td class="display-title">Email: </td>
-            <td class="display-item" id="email"></td>
-          </tr>
-          <tr>
-            <td class="display-title">Endereço: </td>
-            <td class="display-item" id="address"></td>
-          </tr>
-        </table>
-
+        <form action="#">
+          <div class="mdl-typography--text-center">
+            <div class="profile_picture"></div>
+              <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                <i class="material-icons" id="attach" style="display: none;">attach_file</i>
+              </div>
+          </div>
+          <span id="name"></span><br>
+          <span id="phone"></span><br>
+          <span id="email"></span><br>
+          <span id="address"></span><br>
+        </form>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <button id="edit_profile" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent right">
-          Editar Perfil
-        </button>
+        
       </div>
     </div>
   </main>

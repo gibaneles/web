@@ -1,0 +1,39 @@
+<script src="js/products.js"></script>
+<style>
+  .cart {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 60px;
+    font-size: 40px;
+    line-height: 60px;
+  }
+
+  .product-card {
+    height: 220px;
+  }
+
+  .product-header {
+    height: 10%;
+  }
+
+  .product-image {
+    height: 70%;
+  }
+
+  .product-cart-row {
+    height: 20%;
+  }
+
+  .add_to_cart {
+    line-height: 40px;
+  }
+</style>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--10-col-desktop mdl-cell--10-col-tablet mdl-cell--6-col-phone display-title">Gerenciar estoque</div>
+  <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--6-col-phone">
+    <i id="cart" class="material-icons cart accent-white accent-background clickable">shopping_cart</i>
+  </div>
+
+  <div id="product_list" class="mdl-grid mdl-cell mdl-cell--12-col"></div>
+</div>

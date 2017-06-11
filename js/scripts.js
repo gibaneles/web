@@ -5,6 +5,7 @@ $(function() {
         let userpass = $('#userpass').val()
         if((username === 'admin')&&(userpass === 'admin')) {
             swal("Sucesso!", "Login feito com sucesso!", "success")
+            window.location.href = "admin.html"
         } else {
             let users = bd.select("user")
             let login = false

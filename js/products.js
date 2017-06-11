@@ -4,22 +4,25 @@ $(function() {
   let products = bd.select("product")
   let product_count = 0
   for(product of products) {
+    if(product.stock > 0) {
     product_count++
-    let productHTML = '<div data-id="'+product.id+'" id="product-'+product.id+'" class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card text-center">'
-                    +    '<div class="display-title text-center clickable product-header">'+product.name+' - R$'+product.price+'</div>'
-                    +    '<div class="product-image clickable" style="background: gray;"></div>'
-                    +    '<div class="text-center product-cart-row">'
-                    +      '<form action="#">'
-                    +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 80%;">'
-                    +          '<input class="mdl-textfield__input" type="number" pattern="\d*" id="quantity-'+product.id+'">'
-                    +          '<label class="mdl-textfield__label" for="quantity-'+product.id+'"></label>'
-                    +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
-                    +        '</div>'
-                    +        '<i class="material-icons accent clickable add_to_cart">add_shopping_cart</i>'    
-                    +      '</form>'
-                    +    '</div>'
-                    + '</div>';  
-    $('#product_list').append(productHTML)
+      let productHTML = '<div data-id="'+product.id+'" id="product-'+product.id+'" class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card text-center">'
+                      +    '<div class="display-title text-center clickable product-header">'+product.name+' - R$'+product.price+'</div>'
+                      +    '<div class="product-image clickable" style="background: gray;"></div>'
+                      +    '<div class="text-center product-cart-row">'
+                      +      '<form action="#">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 80%;">'
+                      +          '<input class="mdl-textfield__input" type="number" pattern="\d*" id="quantity-'+product.id+'">'
+                      +          '<label class="mdl-textfield__label" for="quantity-'+product.id+'"></label>'
+                      +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
+                      +        '</div>'
+                      +        '<i class="material-icons accent clickable add_to_cart">add_shopping_cart</i>'    
+                      +      '</form>'
+                      +    '</div>'
+                      + '</div>';  
+      $('#product_list').append(productHTML)
+    }
+    
   }
   if(product_count == 0) $('#product_list').append('Nenhum produto encontrado.')
   
@@ -54,7 +57,86 @@ $(function() {
       positive: {
           id: 'ok-button',
           title: 'Finalizar Compra',
-          onClick: function() { }
+          onClick: function() { 
+            
+            let ccHTML = '<div class="mdl-grid mdl-cell mdl-cell--12-col">'
+                      +     '<form action="#">'
+                      +     '<div class="mdl-cell mdl-cell--12-col">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      +          '<input class="mdl-textfield__input" type="text" id="cc_name">'
+                      +          '<label class="mdl-textfield__label" for="cc_name">Nome no Cartão</label>'
+                      +        '</div>'
+                      +     '</div>'
+                      +     '<div class="mdl-cell mdl-cell--12-col">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      +          '<input class="mdl-textfield__input" type="number" pattern="\d*" id="cc_number">'
+                      +          '<label class="mdl-textfield__label" for="cc_number">Número do Cartão</label>'
+                      +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
+                      +        '</div>'
+                      +     '</div>'
+                      +     '<div class="mdl-cell mdl-cell--12-col">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      +          '<input class="mdl-textfield__input" type="number" pattern="\d*" min="1" max="12" id="cc_exp_month">'
+                      +          '<label class="mdl-textfield__label" for="cc_exp_month">Mês de Validade</label>'
+                      +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
+                      +        '</div>'
+                      +     '</div>'
+                      +     '<div class="mdl-cell mdl-cell--12-col">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      +          '<input class="mdl-textfield__input" type="number" pattern="\d*" min="2017" max="2035" id="cc_exp_year">'
+                      +          '<label class="mdl-textfield__label" for="cc_exp_year">Ano de Validade</label>'
+                      +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
+                      +        '</div>'
+                      +     '</div>'
+                      +     '<div class="mdl-cell mdl-cell--12-col">'
+                      +        '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      +          '<input class="mdl-textfield__input" type="number" pattern="\d*" min="1" max="9999" id="sec_code">'
+                      +          '<label class="mdl-textfield__label" for="sec_code">CSC</label>'
+                      +          '<span class="mdl-textfield__error">Precisa ser um numero!</span>'
+                      +        '</div>'
+                      +     '</div>'
+                      +     '</form>'
+                      + '</div>';
+            
+            showDialog({
+              id: 'payment-dialog',
+              title: 'Pagamento',
+              text: ccHTML,
+              negative: {
+                  id: 'cancel-button',
+                  title: 'Cancelar',
+                  onClick: function() { 
+                    $('.mdl-textfield__input').val("")
+                  }
+              },
+              positive: {
+                  id: 'ok-button',
+                  title: 'Pagar',
+                  onClick: function() { 
+                    let order = []
+                    let cart = bd.select("cart")
+                    for(item of cart) {
+                      console.log(cart)
+                      if(item.owner == user) { 
+                        let product = bd.selectId("product", item.product_id)
+                        product.stock -= item.quantity
+                        bd.update("product", product.id, product)
+                        order.push(
+                          {product : item.product_id, quantity : item.quantity}
+                        )
+                        bd.delete("cart", item.id)
+                      }
+                    }
+                    bd.insert("order", {owner : user, date : Date.now(), order : order})
+                    swal("Compra efetuada com sucesso!", "", "success")
+                  }
+              },
+              cancelable: true,
+              contentStyle: {'max-width': '380px'},
+              onLoaded: function() {  },
+              onHidden: function() {  }
+            })
+          }
       },
       cancelable: true,
       contentStyle: {'max-width': '500px'},
