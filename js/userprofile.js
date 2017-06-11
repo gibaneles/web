@@ -1,24 +1,10 @@
 
 $(function() {
-    let user = bd.selectId("sessao", bd.numRows("sessao")-1)
+    let user = bd.selectId("session", bd.numRows("session")-1)
 
-    $('#name').val(user.name)
-    console.log(user)
-    
-    $('#edit').on('click', (e) => {
-      $('.mdl-textfield__input').prop('disabled', false);
-      $('.mdl-textfield__input').val("");
-      $('#edit').hide();
-      $('#save').show();
-      $('#attach').show();
-    });
-  
-    $('#save').on('click', (e) => {
-      $('.mdl-textfield__input').prop('disabled', true);
-      $('#save').hide();
-      $('#edit').show();
-      $('#attach').hide();
-    });
-  
+    $('#name').html(user.name)
+    $('#phone').html(user.phone)
+    $('#email').html(user.email)
+    $('#address').html((user.address) ? user.address : 'Endereço não fornecido')
   
 });

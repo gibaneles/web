@@ -47,9 +47,11 @@ class BD {
     let acc = parseInt(localStorage.getItem(tableName))
     if((acc === undefined)||(acc === null)||(isNaN(acc) === true)) {
       acc = 0
+      console.log('Couldn\'t find table')
     } else {
       if (id < acc) {
         localStorage.setItem(tableName+'_'+id.toString(), '')
+        console.log('Item '+id+' deleted from table '+tableName)
       }
     }
   }

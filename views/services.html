@@ -1,3 +1,4 @@
+<script src="js/services.js"></script>
 <style>
   .service {
     border-collapse: collapse;
@@ -19,6 +20,22 @@
 
   .service-card {
     height: 220px;
+  }
+  
+  .service-card {
+    height: 220px;
+  }
+  
+  .service-header {
+    height: 10%;
+  }
+  
+  .service-image {
+    height: 70%;
+  }
+  
+  .service-cart-row {
+    height: 20%;
   }
 </style>
 <div class="mdl-grid mdl-layout__content">
@@ -52,18 +69,21 @@
     <div class="mdl-cell mdl-cell--4-col-desktop display-title">Serviços disponiveis</div>
     <div class="mdl-cell mdl-cell--8-col-desktop"></div>
 
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card" style="background: red;"></div>
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card" style="background: red;"></div>
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card" style="background: red;"></div>
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card" style="background: red;"></div>
+    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card">
+      <div class="display-title text-center service-header">Produto 1</div>
+      <div class="service-image"></div>
+      <div class="text-center service-cart-row">
+        <i class="material-icons clickable select_service right">check_circle</i>              
+      </div>
+    </div>
 
     <div class="mdl-cell mdl-cell--12-col new_service">
       <div class="mdl-cell mdl-cell--4-col-desktop display-title">Calendario</div>
       <div class="mdl-cell mdl-cell--8-col-desktop"></div>
 
-      <div class="mdl-cell mdl-cell--12-col" style="height: 300px; background: blue;"></div>
+      <div id="calendar" class="mdl-cell mdl-cell--12-col" style="height: 300px; background: blue;"></div>
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent right">
-        Novo Servico
+        Agendar Servico
       </button>
     </div>
 

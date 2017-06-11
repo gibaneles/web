@@ -11,7 +11,8 @@ $(function() {
             for(user of users) {
                 if((user.userpass === userpass)&&(user.username === username)) {
                     login = true
-                    bd.insert("sessao", user)
+                    bd.delete("session", 0)
+                    bd.insert("session", user)
                     window.location.href = "user.html"
                 }
             }
