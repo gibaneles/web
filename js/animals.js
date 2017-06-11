@@ -1,11 +1,11 @@
 
 $(function() {
-  let user = bd.selectId("session", bd.numRows("session")-1).username  
+  let user = bd.selectId("session", bd.numRows("session")-1)
   let animals = bd.select("animal")
   let animal_count = 0
   for(animal of animals) {
     if(animal)
-      {if(animal.owner = user) {
+      {if(animal.owner = user.id) {
         animal_count++;
         console.log(animal)
         let animalHTML = '<div data-id="'+animal.id+'" id="animal-'+animal.id+'" class="mdl-grid mdl-cell mdl-cell--6-col">'
@@ -39,11 +39,11 @@ $(function() {
                       +  '</div>';
 
         $('#animal_list').append(animalHTML)        }
-    }  
-  } 
+    }
+  }
   console.log(animal_count)
-  if(animal_count == 0) $('#animal_list').append('Nenhum animal encontrado. Cadastre um animal') 
-  
+  if(animal_count == 0) $('#animal_list').append('Nenhum animal encontrado. Cadastre um animal')
+
   $('#new_animal').on('click', (e) => {
     console.log('new animal')
     let insertHTML = '<div class="profile_picture"></div>'
@@ -69,7 +69,7 @@ $(function() {
                     +    '<label class="mdl-textfield__label" for="animal_weight">Peso</label>'
                     +  '</div>'
                     +'</form>';
-        
+
     showDialog({
       id: 'new_animal-dialog',
       title: 'Novo Animal',
@@ -85,9 +85,9 @@ $(function() {
           id: 'ok-button',
           title: 'Cadastrar Animal',
           onClick: function() {
-            
+
             let animal = {
-              owner : user,
+              owner : user.id,
               name : $('#animal_name').val(),
               species : $('#animal_species').val(),
               breed : $('#animal_breed').val(),
@@ -115,7 +115,7 @@ $(function() {
       onHidden: function() {  }
     })
   })
-  
+
   $('.delete_animal').on('click', (e) => {
     console.log('delete '+e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
     bd.delete("animal", e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
