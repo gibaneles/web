@@ -2,7 +2,7 @@
 $(function() {
   let session = bd.selectId("session", bd.numRows("session")-1)
   let user = bd.selectId("user", session.id)
-  console.log(bd.numRows("session")-1)
+  console.log(session)
   $('#name').html(user.name)
   $('#phone').html(user.phone)
   $('#email').html(user.email)

@@ -18,6 +18,7 @@ $(function() {
           for(user of users) {
               if((user.userpass === userpass)&&(user.username === username)) {
                   login = true
+                  console.log(user)
                   bd.insert("session", user)
                   if(user.username == "admin") window.location.href = "admin.html"
                   else window.location.href = "user.html"

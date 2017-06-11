@@ -7,7 +7,7 @@ class BD {
     if((id === undefined)||(id === null)||(isNaN(id) === true)) {
       id = 0
     }
-    obj.id = id
+    if(!obj.id) obj.id = id
     localStorage.setItem(tableName+'_'+id.toString(), JSON.stringify(obj))
     id++
     localStorage.setItem(tableName, id.toString())
