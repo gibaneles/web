@@ -124,8 +124,9 @@ $(function() {
   })
  
  $('.delete_user').on('click', (e) => {
-   console.log('delete '+e.currentTarget.parentElement.parentElement.dataset.id)
-   bd.delete("user", e.currentTarget.parentElement.parentElement.dataset.id)
+   console.log(e.currentTarget.parentElement.parentElement.parentElement)
+   console.log('delete '+e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
+   bd.delete("user", e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
    swal("Sucesso!", "O usuário foi apagado.", "success")
    $.get( "views/manage_userprofile.html", function( data ) {
      $( ".page-content" ).empty().html(data)
