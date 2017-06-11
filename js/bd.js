@@ -52,6 +52,8 @@ class BD {
     } else {
       if (id < acc) {
         localStorage.setItem(tableName+'_'+id.toString(), '')
+        //localStorage.removeItem(tableName+'_'+id.toString())
+        //localStorage.setItem(tableName, this.numRows(tableName)-1)
         console.log('Item '+id+' deleted from table '+tableName)
       }
     }

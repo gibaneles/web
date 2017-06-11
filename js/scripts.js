@@ -1,39 +1,44 @@
 $(function() {  
+    let users = bd.select("user")
+    let found_admin = false
+    for(user of users) {
+      if(user.username == "admin") {
+        found_admin = true
+        break
+      }
+    }
+    if(!found_admin) bd.insert("user", {username:"admin",userpass:"admin",name:"Admin",phone:"-",email:"-"})
+   
     $( "#login" ).submit(function( event ) {
         event.preventDefault();
         let username = $('#username').val()
         let userpass = $('#userpass').val()
-        if((username === 'admin')&&(userpass === 'admin')) {
-            swal("Sucesso!", "Login feito com sucesso!", "success")
-            window.location.href = "admin.html"
-        } else {
-            let users = bd.select("user")
-            let login = false
-            for(user of users) {
-                if((user.userpass === userpass)&&(user.username === username)) {
-                    login = true
-                    bd.delete("session", 0)
-                    bd.insert("session", user)
-                    window.location.href = "user.html"
-                }
-            }
-            if(login === false) {
-                swal("Erro!", "Usuário ou senha inválidos!", "error")
-            }
-        }
+        let users = bd.select("user")
+          let login = false
+          for(user of users) {
+              if((user.userpass === userpass)&&(user.username === username)) {
+                  login = true
+                  bd.delete("session", 0)
+                  bd.insert("session", user)
+                  if(user.username == "admin") window.location.href = "admin.html"
+                  else window.location.href = "user.html"
+              }
+          }
+          if(login === false) {
+              swal("Erro!", "Usuário ou senha inválidos!", "error")
+          }
     })
     $( "#register" ).submit(function( event ) {
         event.preventDefault()
         let user = {
             username: $('#username').val(),
             userpass: $('#userpass').val(),
-            passrepeat: $('#passrepeat').val(),
             name: $('#name').val(),
             phone: $('#phone').val(),
             email: $('#email').val()
         }
         let cadastro = true
-        if(user.userpass !== user.passrepeat) {
+        if(user.userpass !== $('#passrepeat').val()) {
             cadastro = false
             swal("Erro!", "As duas senhas devem ser iguais!", "error")
         } else if(user.userpass.length < 3) {

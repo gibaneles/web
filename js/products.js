@@ -120,6 +120,7 @@ $(function() {
                       if(item.owner == user) { 
                         let product = bd.selectId("product", item.product_id)
                         product.stock -= item.quantity
+                        if(parseInt(product.stock) < 0) product.stock = 0
                         bd.update("product", product.id, product)
                         order.push(
                           {product : item.product_id, quantity : item.quantity}

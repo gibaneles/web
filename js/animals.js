@@ -3,41 +3,42 @@ $(function() {
   let user = bd.selectId("session", bd.numRows("session")-1).username  
   let animals = bd.select("animal")
   let animal_count = 0
-  for(animal of animals.entries()) {
-    if(animal[1].owner = user) {
-      animal_count++;
-      console.log(animal)
-      let animalHTML = '<div data-id="'+animal[1].id+'" id="animal-'+animal[1].id+'" class="mdl-grid mdl-cell mdl-cell--6-col">'
-                    +    '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone animal-card text-center">'
-                    +      '<div style="height: 10%;" class="display-title text-center">'+animal[1].name+'</div>'
-                    +      '<div style="height: 90%; background: gray; border-radius: 500px;"></div>'
-                    +    '</div>'
-                    +    '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card">'
-                    +      '<div style="height: 10%;" class=""></div>'
-                    +      '<div style="height: 90%;">'
-                    +        '<table>'
-                    +          '<tr>'
-                    +            '<td class="display-title">Espécie: </td>'
-                    +            '<td class="display-item">'+animal[1].species+'</td>'
-                    +          '</tr>'
-                    +          '<tr>'
-                    +            '<td class="display-title">Raça: </td>'
-                    +            '<td class="display-item">'+animal[1].breed+'</td>'
-                    +          '</tr>'
-                    +          '<tr>'
-                    +            '<td class="display-title">Idade: </td>'
-                    +            '<td class="display-item">'+animal[1].age+'</td>'
-                    +          '</tr>'
-                    +          '<tr>'
-                    +            '<td class="display-title">Peso: </td>'
-                    +            '<td class="display-item">'+animal[1].weight+'</td>'
-                    +          '</tr>'
-                    +        '</table>'
-                    +      '<i class="material-icons accent clickable delete_animal">delete</i></div>'
-                    +    '</div>'
-                    +  '</div>';
+  for(animal of animals) {
+    if(animal)
+      {if(animal.owner = user) {
+        animal_count++;
+        console.log(animal)
+        let animalHTML = '<div data-id="'+animal.id+'" id="animal-'+animal.id+'" class="mdl-grid mdl-cell mdl-cell--6-col">'
+                      +    '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone animal-card text-center">'
+                      +      '<div style="height: 10%;" class="display-title text-center">'+animal.name+'</div>'
+                      +      '<div style="height: 90%; background: gray; border-radius: 500px;"></div>'
+                      +    '</div>'
+                      +    '<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone product-card">'
+                      +      '<div style="height: 10%;" class=""></div>'
+                      +      '<div style="height: 90%;">'
+                      +        '<table>'
+                      +          '<tr>'
+                      +            '<td class="display-title">Espécie: </td>'
+                      +            '<td class="display-item">'+animal.species+'</td>'
+                      +          '</tr>'
+                      +          '<tr>'
+                      +            '<td class="display-title">Raça: </td>'
+                      +            '<td class="display-item">'+animal.breed+'</td>'
+                      +          '</tr>'
+                      +          '<tr>'
+                      +            '<td class="display-title">Idade: </td>'
+                      +            '<td class="display-item">'+animal.age+'</td>'
+                      +          '</tr>'
+                      +          '<tr>'
+                      +            '<td class="display-title">Peso: </td>'
+                      +            '<td class="display-item">'+animal.weight+'</td>'
+                      +          '</tr>'
+                      +        '</table>'
+                      +      '<i class="material-icons accent clickable delete_animal">delete</i></div>'
+                      +    '</div>'
+                      +  '</div>';
 
-      $('#animal_list').append(animalHTML)        
+        $('#animal_list').append(animalHTML)        }
     }  
   } 
   console.log(animal_count)
