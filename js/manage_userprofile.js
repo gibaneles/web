@@ -99,7 +99,7 @@ $(function() {
               swal("Erro!", "As senhas devem ser iguais!", "error")
               return
             }
-              
+
             bd.insert("user", user)
             swal({
                 title: "Sucesso!",
@@ -122,7 +122,7 @@ $(function() {
       onHidden: function() {  }
     })
   })
- 
+
  $('.delete_user').on('click', (e) => {
    console.log(e.currentTarget.parentElement.parentElement.parentElement)
    console.log('delete '+e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
