@@ -18,14 +18,14 @@ $(function() {
     for(service of services) {
       if(service) {
         if(service.disponivel === true) {
-          $("#service-"+(service.id+1)+" > td:nth-child(2)").html("Disponível")
-          $("#service-"+(service.id+1)+" > td:nth-child(3)").html("Disponível")
-          $("#service-"+(service.id+1)+" > td:nth-child(4)").html("Disponível")
+          $("#service-"+(service.id)+" > td:nth-child(2)").html("Disponível")
+          $("#service-"+(service.id)+" > td:nth-child(3)").html("Disponível")
+          $("#service-"+(service.id)+" > td:nth-child(4)").html("Disponível")
         }
         if(service.disponivel === false) {
-          $("#service-"+(service.id+1)+" > td:nth-child(2)").html(service.servico)
-          $("#service-"+(service.id+1)+" > td:nth-child(3)").html(service.animal.name)
-          $("#service-"+(service.id+1)+" > td:nth-child(4)").html(service.valor)
+          $("#service-"+(service.id)+" > td:nth-child(2)").html(service.servico)
+          $("#service-"+(service.id)+" > td:nth-child(3)").html(service.animal.name)
+          $("#service-"+(service.id)+" > td:nth-child(4)").html("R$"+parseFloat(service.valor).toFixed(2))
         }
       }
     }
@@ -33,7 +33,7 @@ $(function() {
   })
   $("#agendar").click(function(e) {
     let animals = bd.select("animal")
-    console.log(animals)
+    //console.log(animals)
     let selectAnimals = ''
     for(animal of animals) {
       if(animal) {
@@ -45,6 +45,7 @@ $(function() {
                     + '<p>Date: <input type="text" id="datepicker-modal" size="30"></p>'
   					+  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
                     +    '<select id="slot_id">'
+                    +       '<option value="-1">Selecione um horário</option>'
                     +       '<option value="0">07:00 - 08:00</option>'
                     +       '<option value="1">08:00 - 09:00</option>'
                     +       '<option value="2">09:00 - 10:00</option>'
@@ -85,18 +86,18 @@ $(function() {
           id: 'ok-button',
           title: 'Agendar Serviço',
           onClick: function() {
-            console.log($('#animal_id').val())
-            console.log(bd.selectId("animal", $('#animal_id').val()))
+            //console.log($('#animal_id').val())
+            //console.log(bd.selectId("animal", $('#animal_id').val()))
             let servico = {
               service : "teste",
               animal : bd.selectId("animal", $('#animal_id').val()),
               valor : $('#service_valor').val(),
               disponivel : false,
-              id: ($('#slot_id').val()-1)
+              id: $('#slot_id').val()
             }
               
             bd.update("service-"+$('#datepicker-modal').val(), $('#slot_id').val(), servico)
-            console.log(bd.select("service-"+$('#datepicker-modal').val()))
+            console.log(bd.selectId("service-"+$('#datepicker-modal').val(), $('#slot_id').val()))
             swal({
                 title: "Sucesso!",
                 text: "Serviço agendado com sucesso!",
@@ -116,13 +117,29 @@ $(function() {
       cancelable: true,
       contentStyle: {'max-width': '330px'},
       onLoaded: function() { 
+        $("#slot_id").hide()
         $( "#datepicker-modal" ).datepicker()
         $( "#datepicker-modal" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
-        if(bd.numRows("service-"+$( "#datepicker-modal" ).val()) === 0) {
-          for(let i = 0; i < 10; i++){
-            bd.insert("service-"+ $( "#datepicker-modal" ).val(), { servico: null, animal: null, valor: null, disponivel: true })
+        $( "#datepicker-modal" ).change(function(e) {
+          $("#slot_id").show()
+          $('#slot_id').val('-1')
+          if(bd.numRows("service-"+$( "#datepicker-modal" ).val()) === 0) {
+            for(let i = 0; i < 10; i++){
+              bd.insert("service-"+ $( "#datepicker-modal" ).val(), { servico: null, animal: null, valor: null, disponivel: true })
+            }
           }
-        }
+          let services = bd.select("service-"+ $( "#datepicker-modal" ).val())
+          for(service of services) {  
+            if(service) {
+              console.log(service)
+              if(service.disponivel === false) {
+                $('#slot_id > option:nth-child('+(service.id+2)+')').hide()
+              } else {
+                $('#slot_id > option:nth-child('+(service.id+2)+')').show()
+              }
+            }
+          }
+        })
       },
       onHidden: function() {  }
     })
