@@ -55,26 +55,29 @@ $(function() {
     } 
     else {
       let animals = bd.select("animal")
-      let selectAnimals = ''
+      let selectAnimalHTML = ''
 
       for(animal of animals) {
         if(animal) {
-          selectAnimals = selectAnimals + '<option value="'+animal.id+'">'+animal.name+'</option>'
+          selectAnimalHTML += '<li data-id="'+animal.id+'" class="mdl-menu__item animal_item">'+animal.name+'</li>'
         }
       }
       
       let services = bd.select("service")
-      let selectServices = ''
+      let selectServicesHTML = ''
 
       for(service of services) {
         if(service) {
-          selectServices = selectServices + '<option value="'+service.id+'">'+service.name+' - R$'+parseFloat(service.price).toFixed(2)+'</option>'
+          selectServicesHTML += '<li data-id="'+service.id+'" class="mdl-menu__item service_item">'+service.name+' - R$'+parseFloat(service.price).toFixed(2)+'</li>'
         }
       }
       
       let insertHTML = '<div class="profile_picture"></div>'
                       +'<form action="#">'
-                      + '<p>Date: <input type="text" id="datepicker-modal" size="30"></p>'
+                      +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
+                      + '<input type="text" class="mdl-textfield__input" id="datepicker-modal" size="30">'
+                      +		'<label data-id="" id="label_data" for="datepicker-modal" class="mdl-textfield__label">Data</label>'
+                      +	'</div>'	
                       +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
                       +    '<select id="slot_id">'
                       +       '<option value="-1">Selecione um horário</option>'
@@ -89,17 +92,21 @@ $(function() {
                       +       '<option value="8">16:00 - 17:00</option>'
                       +       '<option value="9">17:00 - 18:00</option>'
                       +    '</select>'
-                      +  '</div>'
-                      +   '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
-                      +    '<select id="animal_id">'
-                      +       selectAnimals
-                      +    '</select>'
-                      +  '</div>'
-                      +   '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
-                      +    '<select id="service_id">'
-                      +       selectServices
-                      +    '</select>'
-                      +  '</div>'
+                      +	'</div>'	
+                      +	'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth" id="select_animal">'
+                      +		'<input class="mdl-textfield__input" type="text" id="animal_id" value="" readonly tabIndex="-1">'
+                      +		'<label data-id="" id="label_animal" for="animal_id" class="mdl-textfield__label">Animal escolhido</label>'
+                      +		'<ul for="animal_id" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">'
+                      +    		selectAnimalHTML
+                      +		'</ul>'
+                      +	'</div>'			
+                      +	'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth" id="select_service">'
+                      +		'<input class="mdl-textfield__input" type="text" id="service_id" value="" readonly tabIndex="-1">'
+                      +		'<label data-id="" id="label_service" for="service_id" class="mdl-textfield__label">Serviço desejado</label>'
+                      +		'<ul for="service_id" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">'
+                      +    		selectServicesHTML
+                      +		'</ul>'
+                      +	'</div>'
                       +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
                       +    '<input class="mdl-textfield__input" type="text">'
                       +    '<label class="mdl-textfield__label" for="service_valor">Cartão de crédito</label>'
@@ -124,8 +131,8 @@ $(function() {
             title: 'Agendar Serviço',
             onClick: function() {
               let servico = {
-                service : bd.selectId("service", $('#service_id').val()),
-                animal : bd.selectId("animal", $('#animal_id').val()),
+                service : bd.selectId("service", $('#select_service .selected').data("id")),
+                animal : bd.selectId("animal", $('#select_animal .selected').data("id")),
                 disponivel : false,
                 id: $('#slot_id').val()
               }
@@ -151,6 +158,22 @@ $(function() {
         cancelable: true,
         contentStyle: {'max-width': '330px'},
         onLoaded: function() { 
+          if($( "#datepicker" ).val().length > 0) {
+            $("#label_data").html('')
+          }
+          
+          $('.service_item').on('click', (e) => {
+            $('.service_item').removeClass('selected')
+            e.currentTarget.className += ' selected'
+            $('#label_service').html(e.currentTarget.innerHTML)
+            $('#label_service').css('color', 'rgb(0,0,0)')
+          })
+          $('.animal_item').on('click', (e) => {
+            $('.animal_item').removeClass('selected')
+            e.currentTarget.className += ' selected'
+            $('#label_animal').html(e.currentTarget.innerHTML)
+            $('#label_animal').css('color', 'rgb(0,0,0)')
+          })
           $( "#datepicker-modal" ).datepicker()
           $( "#datepicker-modal" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
           $( "#datepicker-modal" ).val($( "#datepicker" ).val())
@@ -173,6 +196,7 @@ $(function() {
               }
             }
           $( "#datepicker-modal" ).change(function(e) {
+            $("#label_data").html('')
             $( "#datepicker" ).val($( "#datepicker-modal" ).val())
             $("#slot_id").show()
             $('#slot_id').val('-1')
