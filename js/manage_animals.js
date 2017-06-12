@@ -53,7 +53,7 @@ $(function() {
 
   $('#new_animal').on('click', (e) => {
     console.log('new animal')
-	let sHTML = '' //fazendo
+	  let sHTML = '' //fazendo
     let insertHTML = '<div class="profile_picture"></div>'
                     +'<form action="#">'
 					+  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
