@@ -53,18 +53,26 @@ $(function() {
 
   $('#new_animal').on('click', (e) => {
     console.log('new animal')
-	  let sHTML = '' //fazendo
+
+	let users = bd.select("user")
+	let sHTML = ''
+	for(user of users){
+		sHTML += '<li data-id="'+user.id+'" class="mdl-menu__item owner_item">'+user.name+'</li>'
+	}
+
     let insertHTML = '<div class="profile_picture"></div>'
                     +'<form action="#">'
 					+  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
                     +    '<input class="mdl-textfield__input" type="text" id="animal_name">'
                     +    '<label class="mdl-textfield__label" for="animal_name">Nome</label>'
                     +  '</div>'
-					+  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
-					+	 '<select id="animal_owner">'
-					+	 	sHTML
-					+	 '</select>'
-                    +  '</div>'
+					+	'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">'
+		          	+		'<input class="mdl-textfield__input" type="text" id="animal_owner" value="" readonly tabIndex="-1">'
+		            +		'<label data-id="" id="label_owner" for="animal_owner" class="mdl-textfield__label">Selecione o dono</label>'
+		            +		'<ul for="animal_owner" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">'
+		            +    		sHTML
+		            +		'</ul>'
+		          	+	'</div>'
                     +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
                     +    '<input class="mdl-textfield__input" type="text" id="animal_species">'
                     +    '<label class="mdl-textfield__label" for="animal_species">Espécie</label>'
@@ -100,7 +108,7 @@ $(function() {
           onClick: function() {
 
             let animal = {
-              owner : $('#animal_owner').val(),
+              owner : $('.selected').data("id"),
               name : $('#animal_name').val(),
               species : $('#animal_species').val(),
               breed : $('#animal_breed').val(),
@@ -124,7 +132,14 @@ $(function() {
       },
       cancelable: true,
       contentStyle: {'max-width': '330px'},
-      onLoaded: function() {  },
+      onLoaded: function() {
+		$('.owner_item').on('click', (e) => {
+			$('.owner_item').removeClass('selected')
+			e.currentTarget.className += ' selected'
+			$('#label_owner').html(e.currentTarget.innerHTML)
+			$('#label_owner').css('color', 'rgb(0,0,0)')
+		})
+	  },
       onHidden: function() {  }
     })
   })
