@@ -27,7 +27,7 @@ $(function() {
                       +          '</tr>'
                       +          '<tr>'
                       +            '<td class="display-title">Endereço: </td>'
-                      +            '<td class="display-item">'+user.address+'</td>'
+                      +            '<td class="display-item">'+((user.address) ? user.address : 'Endereço não fornecido')+'</td>'
                       +          '</tr>'
                       +        '</table>'
                       +      '<i class="material-icons accent clickable edit_user">mode_edit</i>'

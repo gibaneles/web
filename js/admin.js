@@ -24,8 +24,14 @@ $(function() {
       });
     });
 
-	$('#manage_inventory').on('click', (e) => {
+    $('#manage_inventory').on('click', (e) => {
       $.get( "views/manage_inventory.html", function( data ) {
+        $( ".page-content" ).empty().html(data)
+      });
+    });
+  
+    $('#manage_orders').on('click', (e) => {
+      $.get( "views/manage_orders.html", function( data ) {
         $( ".page-content" ).empty().html(data)
       });
     });
