@@ -30,4 +30,9 @@ $(function() {
       });
     });
 
+	$('#logout').on('click', (e) => {
+	  //apagar sessao
+	  window.location.href = "index.html"
+    });
+
 });
