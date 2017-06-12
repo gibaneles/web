@@ -8,7 +8,6 @@ $(function() {
   $( "#datepicker" ).datepicker()
   $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
   $( "#datepicker" ).change(function(e) {
-    $( "#datepicker-modal" ).val($( "#datepicker" ).val())
     if(bd.numRows("service-"+$( "#datepicker" ).val()) === 0) {
       for(let i = 0; i < 10; i++){
         bd.insert("service-"+ $( "#datepicker" ).val(), { user_id: null, servico: null, animal: null, disponivel: true })
@@ -152,9 +151,27 @@ $(function() {
         cancelable: true,
         contentStyle: {'max-width': '330px'},
         onLoaded: function() { 
-          $("#slot_id").hide()
           $( "#datepicker-modal" ).datepicker()
           $( "#datepicker-modal" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
+          $( "#datepicker-modal" ).val($( "#datepicker" ).val())
+          $( "#datepicker" ).val($( "#datepicker-modal" ).val())
+            $('#slot_id').val('-1')
+            if(bd.numRows("service-"+$( "#datepicker-modal" ).val()) === 0) {
+              for(let i = 0; i < 10; i++){
+                bd.insert("service-"+ $( "#datepicker-modal" ).val(), { service: null, animal: null, disponivel: true, id: i })
+              }
+            }
+            let services = bd.select("service-"+ $( "#datepicker-modal" ).val())
+            console.log(services)
+            for(service of services) {  
+              if(service) {
+                if(service.disponivel === false) {
+                  $('#slot_id > option:nth-child('+(parseInt(service.id)+2)+')').hide()
+                } else {
+                  $('#slot_id > option:nth-child('+(parseInt(service.id)+2)+')').show()
+                }
+              }
+            }
           $( "#datepicker-modal" ).change(function(e) {
             $( "#datepicker" ).val($( "#datepicker-modal" ).val())
             $("#slot_id").show()
