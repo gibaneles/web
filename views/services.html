@@ -40,43 +40,6 @@
 </style>
 <div class="mdl-grid mdl-layout__content">
 
-    <div class="mdl-cell mdl-cell--4-col-desktop display-title">Serviços agendados</div>
-    <div class="mdl-cell mdl-cell--8-col-desktop"></div>
-
-    <div class="mdl-cell mdl-cell--12-col">
-      <table class="service" style="margin: auto;">
-        <thead>
-          <tr>
-            <th>Serviço</th>
-            <th>Animal</th>
-            <th>Valor</th>
-            <th>Data Agendada</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-            <td>06/07/2017</td>
-            <td><i class="material-icons clickable accent">mode_edit</i> <i class="material-icons clickable accent">cancel</i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mdl-cell mdl-cell--4-col-desktop display-title">Serviços disponiveis</div>
-    <div class="mdl-cell mdl-cell--8-col-desktop"></div>
-
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card">
-      <div class="display-title text-center service-header">Produto 1</div>
-      <div class="service-image"></div>
-      <div class="text-center service-cart-row">
-        <i class="material-icons clickable select_service right">check_circle</i>              
-      </div>
-    </div>
-
     <div class="mdl-cell mdl-cell--12-col new_service">
       <div class="mdl-cell mdl-cell--4-col-desktop display-title">Calendario</div>
       <div class="mdl-cell mdl-cell--8-col-desktop"></div>
@@ -84,78 +47,78 @@
       <p>Date: <input type="text" id="datepicker" size="30"></p>
       
       <div class="mdl-cell mdl-cell--12-col">
-      <table class="service" id="calendario" style="margin: auto;">
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Serviço</th>
-            <th>Animal</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="service-0">
-            <td>07:00 - 08:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-1">
-            <td>08:00 - 09:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-2">
-            <td>09:00 - 10:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-3">
-            <td>10:00 - 11:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-4">
-            <td>11:00 - 12:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-5">
-            <td>13:00 - 14:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-6">
-            <td>14:00 - 15:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-7">
-            <td>15:00 - 16:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-8">
-            <td>16:00 - 17:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-9">
-            <td>17:00 - 18:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="wrapper">
+        <div class="table" id="calendario" style="margin: auto;">
+          <div class="row header blue">
+            <div class="cell">Horário</div>
+            <div class="cell">Serviço</div>
+            <div class="cell">Animal</div>
+            <div class="cell">Valor</div>
+          </div>
+  <!--        <tbody>-->
+            <div class="row" id="service-0">
+              <div class="cell">07:00 - 08:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-1">
+              <div class="cell">08:00 - 09:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-2">
+              <div class="cell">09:00 - 10:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-3">
+              <div class="cell">10:00 - 11:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-4">
+              <div class="cell">11:00 - 12:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-5">
+              <div class="cell">13:00 - 14:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-6">
+              <div class="cell">14:00 - 15:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-7">
+              <div class="cell">15:00 - 16:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-8">
+              <div class="cell">16:00 - 17:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+            <div class="row" id="service-9">
+              <div class="cell">17:00 - 18:00</div>
+              <div class="cell">Banho e Tosa</div>
+              <div class="cell">Fofusho</div>
+              <div class="cell">R$35,00</div>
+            </div>
+  <!--        </tbody>-->
+        </div>
+      </div>
     </div>
  
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent right" id="agendar">
