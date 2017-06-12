@@ -7,7 +7,7 @@ body {
 }
 
 .demo-card-wide.mdl-card {
-  width: 50%;
+  width: 100%;
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;
