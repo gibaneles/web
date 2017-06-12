@@ -1,13 +1,8 @@
 <script src="js/manage_services.js"></script>
 <style>
-  .service {
+  table {
     border-collapse: collapse;
-    border: 1px solid #d7d7d7;
-  }
-
-  .service td, .service th{
-    width: 20%;
-    text-align: center;
+    border: 1px solid #d3d3d3;
   }
 
   tbody:nth-child(odd) {
@@ -17,145 +12,16 @@
   tbody:nth-child(even) {
     background: #d3d3d3;
   }
-
-  .service-card {
-    height: 220px;
-  }
-
-  .service-card {
-    height: 220px;
-  }
-
-  .service-header {
-    height: 10%;
-  }
-
-  .service-image {
-    height: 70%;
-  }
-
-  .service-cart-row {
-    height: 20%;
-  }
 </style>
-<div class="mdl-grid mdl-layout__content">
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--10-col-tablet mdl-cell--6-col-phone display-title">Gerenciar produtos</div>
 
-    <div class="mdl-cell mdl-cell--4-col-desktop display-title">Gerenciar serviços</div>
-    <div class="mdl-cell mdl-cell--8-col-desktop"></div>
+  <div class="mdl-cell mdl-cell--3-col">
+    <button id="new_service" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent right">
+      Novo serviço
+    </button>
+  </div>
 
-    <div class="mdl-cell mdl-cell--12-col">
-      <table class="service" style="margin: auto;">
-        <thead>
-          <tr>
-            <th>Serviço</th>
-            <th>Animal</th>
-            <th>Valor</th>
-            <th>Data Agendada</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-            <td>06/07/2017</td>
-            <td><i class="material-icons clickable accent">mode_edit</i> <i class="material-icons clickable accent">cancel</i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mdl-cell mdl-cell--4-col-desktop display-title">Serviços disponiveis</div>
-    <div class="mdl-cell mdl-cell--8-col-desktop"></div>
-
-    <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--6-cell-tablet mdl-cell--12-col-phone service-card">
-      <div class="display-title text-center service-header">Produto 1</div>
-      <div class="service-image"></div>
-      <div class="text-center service-cart-row">
-        <i class="material-icons clickable select_service right">check_circle</i>
-      </div>
-    </div>
-
-    <div class="mdl-cell mdl-cell--12-col new_service">
-      <div class="mdl-cell mdl-cell--4-col-desktop display-title">Calendario</div>
-      <div class="mdl-cell mdl-cell--8-col-desktop"></div>
-
-      <p>Date: <input type="text" id="datepicker" size="30"></p>
-      
-      <div class="mdl-cell mdl-cell--12-col">
-      <table class="service" id="calendario" style="margin: auto;">
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Serviço</th>
-            <th>Animal</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="service-0">
-            <td>07:00 - 08:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-1">
-            <td>08:00 - 09:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-2">
-            <td>09:00 - 10:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-3">
-            <td>10:00 - 11:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-4">
-            <td>11:00 - 12:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-5">
-            <td>13:00 - 14:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-6">
-            <td>14:00 - 15:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-7">
-            <td>15:00 - 16:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-8">
-            <td>16:00 - 17:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-          <tr id="service-9">
-            <td>17:00 - 18:00</td>
-            <td>Banho e Tosa</td>
-            <td>Fofusho</td>
-            <td>R$35,00</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div id="product_list" class="mdl-grid mdl-cell mdl-cell--12-col"></div>
 
 </div>
