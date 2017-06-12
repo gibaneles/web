@@ -5,7 +5,7 @@ $(function() {
       $('.select_service').removeClass('accent')
       event.target.className += " accent"
     })
-  $( "#datepicker" ).datepicker()
+  $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+10W" })
   $( "#datepicker" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
   $( "#datepicker" ).change(function(e) {
     if(bd.numRows("service-"+$( "#datepicker" ).val()) === 0) {
@@ -174,7 +174,7 @@ $(function() {
             $('#label_animal').html(e.currentTarget.innerHTML)
             $('#label_animal').css('color', 'rgb(0,0,0)')
           })
-          $( "#datepicker-modal" ).datepicker()
+          $( "#datepicker-modal" ).datepicker({ minDate: 0, maxDate: "+10W" })
           $( "#datepicker-modal" ).datepicker( "option", "dateFormat", 'dd/mm/yy' )
           $( "#datepicker-modal" ).val($( "#datepicker" ).val())
           $( "#datepicker" ).val($( "#datepicker-modal" ).val())
