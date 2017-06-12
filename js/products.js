@@ -37,11 +37,11 @@ $(function() {
   $('#cart').on('click', (e) => {
     
     let cart = bd.select("cart")
-    let cartHTML = '<table style="width: 100%; text-align: center;"><tr><th>Produto</th><th>Quantidade</th><th>Preço</th><th>Total</th><th></th></tr>'
+    let cartHTML = '<div class="table" style="width: 100%; text-align: center;"><div class="row header blue"><div class="cell">Produto</div><div class="cell">Quantidade</div><div class="cell">Preço</div><div class="cell">Total</div><div class="cell"></div></div>'
     for(item of cart) {
       if(item.owner == user) {
         let product = bd.selectId("product", item.product_id)
-        cartHTML += '<tr data-id="'+item.id+'" id="cart_item-'+item.id+'"><td>'+product.name+'</td><td>'+item.quantity+'</td><td>R$'+product.price+'</td><td>R$'+(item.quantity*product.price)+'</td><td><i class="material-icons delete_from_cart accent clickable">delete</i></td></tr>'
+        cartHTML += '<div class="row" data-id="'+item.id+'" id="cart_item-'+item.id+'"><div class="cell">'+product.name+'</div><div class="cell">'+item.quantity+'</div><div class="cell">R$'+product.price+'</div><div class="cell">R$'+(item.quantity*product.price)+'</div><div class="cell"><i class="material-icons delete_from_cart accent clickable">delete</i></div></div>'
       }
     }
     cartHTML += '</table>'

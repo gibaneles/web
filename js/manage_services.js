@@ -1,16 +1,16 @@
 $(function() {
 
   let tableHTML = '<div class="mdl-grid mdl-cell mdl-cell--12-col">'
-                 +   '<table class="text-center" id="service_table" style="width: 100%;">'
-                 +      '<tr class="display-title"><th>ID</th><th>Nome</th><th>Preço (R$)</th><th>Descrição</th><th></th></tr>'
-                 +   '</table>'
+                 +   '<div class="table text-center" id="service_table" style="width: 100%;">'
+                 +      '<div class="row header blue"><div class="cell">ID</div><div class="cell">Nome</div><div class="cell">Preço (R$)</div><div class="cell">Descrição</div><div class="cell"></div></div>'
+                 +   '</div>'
                  +'</div>';
   
   $('#product_list').append(tableHTML);
   
   let services = bd.select("service")
   for(service of services) {
-    $('#service_table').append('<tr id="product_id-'+service.id+'" data-id="'+service.id+'"><td class="display-item">'+service.id+'</td><td class="display-item">'+service.name+'</td><td class="display-item">'+service.price+'</td><td class="display-item">'+service.description+'</td><td class="display-item"><i class="material-icons accent clickable edit_service">mode_edit</i><i class="material-icons clickable accent delete_service">delete</i></td></tr>')
+    $('#service_table').append('<div id="product_id-'+service.id+'" data-id="'+service.id+'" class="row"><div class="cell">'+service.id+'</div><div class="cell">'+service.name+'</div><div class="cell">'+service.price+'</div><div class="cell">'+service.description+'</div><div class="cell"><i class="material-icons accent clickable edit_service">mode_edit</i><i class="material-icons clickable accent delete_service">delete</i></div></div>')
   }
   
   $('.edit_service').on('click', (e) => {

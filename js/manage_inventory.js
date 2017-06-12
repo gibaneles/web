@@ -1,16 +1,16 @@
 $(function() {
 
   let tableHTML = '<div class="mdl-grid mdl-cell mdl-cell--12-col">'
-                 +   '<table class="text-center" id="product_table" style="width: 100%;">'
-                 +      '<tr class="display-title"><th>ID</th><th>Nome</th><th>Estoque</th><th></th><th>Movimentar Estoque</th></tr>'
-                 +   '</table>'
+                 +   '<div class="text-center table" id="product_table" style="width: 100%;">'
+                 +      '<div class="row header blue"><div class="cell">ID</div><div class="cell">Nome</div><div class="cell">Estoque</div><div class="cell"></div><div class="cell">Movimentar Estoque</div></div>'
+                 +   '</div>'
                  +'</div>';
   
   $('#product_list').append(tableHTML);
   
   let products = bd.select("product")
   for(product of products) {
-    $('#product_table').append('<tr id="product_id-'+product.id+'" data-id="'+product.id+'"><td class="display-item">'+product.id+'</td><td class="display-item">'+product.name+'</td><td class="display-item" id="product_stock-'+product.id+'">'+product.stock+'</td><td class="display-item"></td><td class="display-item"><input class="mdl-textfield__input" id="move_product-'+product.id+'" style="display: inline; width: 50px; margin-right: 5px;" type="number"><i class="material-icons accent clickable plus">add_circle</i><i class="material-icons accent clickable minus">remove_circle</i></td></tr>')
+    $('#product_table').append('<div id="product_id-'+product.id+'" data-id="'+product.id+'" class="row"><div class="cell">'+product.id+'</div><div class="cell">'+product.name+'</div><div class="cell" id="product_stock-'+product.id+'">'+product.stock+'</div><div class="cell"></div><div class="cell"><input class="mdl-textfield__input" id="move_product-'+product.id+'" style="display: inline; width: 50px; margin-right: 5px;" type="number"><i class="material-icons accent clickable plus">add_circle</i><i class="material-icons accent clickable minus">remove_circle</i></div></div>')
   }
   
   $('.plus').on('click', (e) => {

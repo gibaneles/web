@@ -1,9 +1,9 @@
 $(function() {
 
   let tableHTML = '<div class="mdl-grid mdl-cell mdl-cell--12-col">'
-                 +   '<table class="text-center" id="order_table" style="width: 100%;">'
-                 +      '<tr class="display-title"><th>Cliente</th><th>Pedido</th><th>Total</th></tr>'
-                 +   '</table>'
+                 +   '<div class="text-center table" id="order_table" style="width: 100%;">'
+                 +      '<div class="row header blue"><div class="cell">Cliente</div><div class="cell">Pedido</div><div class="cell">Total</div></div>'
+                 +   '</div>'
                  +'</div>';
   
   $('#order_list').append(tableHTML);
@@ -18,7 +18,7 @@ $(function() {
       order_items.push(product)
     }
     
-    $('#order_table').append('<tr id="product_id-'+order.id+'" data-id="'+order.id+'"><td class="display-item">'+order.owner+'</td><td id="list-'+order.id+'" class="display-item"></td>')
+    $('#order_table').append('<div class="row" id="product_id-'+order.id+'" data-id="'+order.id+'"><div class="row">'+order.owner+'</div><div id="list-'+order.id+'" class="cell"></div>')
     
     let total = 0
     let selector = '#list-'+order.id
@@ -28,7 +28,7 @@ $(function() {
     }
     
     selector = '#product_id-'+order.id
-    $(selector).append('<td class="display-item">R$'+total+'</td>')    
+    $(selector).append('<div class="row">R$'+total+'</div>')    
     
   }
   
