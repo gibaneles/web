@@ -40,7 +40,7 @@ $(function() {
                       +            '<td class="display-item">'+animal.weight+'</td>'
                       +          '</tr>'
                       +        '</table>'
-                      +      '<i class="material-icons accent clickable delete_animal">delete</i></div>'
+                      +      '<i class="material-icons accent clickable edit_animal">mode_edit</i><i class="material-icons accent clickable delete_animal">delete</i></div>'
                       +    '</div>'
                       +  '</div>';
 
@@ -56,9 +56,15 @@ $(function() {
 
 	let users = bd.select("user")
 	let sHTML = ''
+	let usercount = 0
 	for(user of users){
-		sHTML += '<li data-id="'+user.id+'" class="mdl-menu__item owner_item">'+user.name+'</li>'
+		if (user.id != 0) {
+			usercount++
+			sHTML += '<li data-id="'+user.id+'" class="mdl-menu__item owner_item">'+user.name+'</li>'
+		}
 	}
+
+	if (usercount != 0){
 
     let insertHTML = '<div class="profile_picture"></div>'
                     +'<form action="#">'
@@ -82,11 +88,11 @@ $(function() {
                     +    '<label class="mdl-textfield__label" for="animal_breed">Raça</label>'
                     +  '</div>'
                     +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
-                    +    '<input class="mdl-textfield__input" type="text" id="animal_age">'
+                    +    '<input class="mdl-textfield__input" type="number" id="animal_age">'
                     +    '<label class="mdl-textfield__label" for="animal_age">Idade</label>'
                     +  '</div>'
                     +  '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'
-                    +    '<input class="mdl-textfield__input" type="text" id="animal_weight">'
+                    +    '<input class="mdl-textfield__input" type="number" id="animal_weight">'
                     +    '<label class="mdl-textfield__label" for="animal_weight">Peso</label>'
                     +  '</div>'
                     +'</form>';
@@ -142,11 +148,16 @@ $(function() {
 	  },
       onHidden: function() {  }
     })
+	}
+	else{
+		swal("Erro!", "Não existem pessoas para que se possa cadastrar animais.", "error")
+	}
   })
 
   $('.delete_animal').on('click', (e) => {
     console.log('delete '+e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
     bd.delete("animal", e.currentTarget.parentElement.parentElement.parentElement.dataset.id)
+	swal("Sucesso!", "O animal foi apagado.", "success")
     $.get( "views/manage_animals.html", function( data ) {
       $( ".page-content" ).empty().html(data)
     });
