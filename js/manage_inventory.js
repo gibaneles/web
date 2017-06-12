@@ -47,6 +47,7 @@ $(function() {
       let product = bd.selectId("product", id)
       product.stock = parseInt(product.stock) - parseInt(quantity)
       if(parseInt(product.stock) < 0) product.stock = 0
+      
       console.log(product)
       bd.update("product", id, product) 
       $.get( "views/manage_inventory.html", function( data ) {
